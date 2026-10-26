@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getirek Demo</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+</head>
+<body class="mode-sunum">
+
+<header class="top">
+  <a class="brand" href="#" onclick="A.mode('sunum');return false">
+    <span class="logo" data-logo></span>
+    <b>Get<span>irek</span></b>
+    <small>Demo</small>
+  </a>
+  <nav class="tabs">
+    <button data-mode="sunum" onclick="A.mode('sunum')"><i data-lucide="presentation"></i>Sunum</button>
+    <button data-mode="live" onclick="A.mode('live')"><i data-lucide="radio"></i>Canlı Demo</button>
+    <button data-mode="panel" onclick="A.mode('panel')"><i data-lucide="layout-dashboard"></i>İşletme Paneli</button>
+  </nav>
+  <div class="top-actions">
+    <button class="btn-ghost" onclick="A.reset()" title="Demoyu sıfırla"><i data-lucide="rotate-ccw"></i><span>Sıfırla</span></button>
+    <button class="btn-play" id="playBtn" onclick="A.autoplay()"><i data-lucide="play"></i><span>Senaryoyu Oynat</span></button>
+  </div>
+</header>
+
+<!-- ===================== SUNUM ===================== -->
+<main id="sunum" class="view">
+  <section class="hero">
+    <div class="hero-text">
+      <div class="lockup"><img src="img/app-icon.png" alt=""><div><b>Get<span>irek</span></b><small>İstediğin her şey, daha yakın!</small></div></div>
+      <span class="pill"><i data-lucide="sparkles"></i> Yerel teslimat platformu</span>
+      <h1>İstediğin her şey,<br><em>daha yakın.</em></h1>
+      <p>Restorandan markete, yedek parçacıdan mahalle esnafına — tek platform, üç uygulama. Müşteri sipariş verir, işletme panelden hazırlar, kurye teslim eder; herkes aynı siparişi <b>canlı</b> takip eder.</p>
+      <div class="hero-cta">
+        <button class="btn-primary" onclick="A.mode('live')"><i data-lucide="radio"></i>Canlı demoyu aç</button>
+        <button class="btn-outline" onclick="A.mode('live');A.autoplay()"><i data-lucide="play"></i>Senaryoyu baştan oynat</button>
+      </div>
+      <div class="hero-stats">
+        <div><b>3</b><span>uygulama</span></div>
+        <div><b>%12</b><span>komisyon</span></div>
+        <div><b>30 dk</b><span>ort. teslimat</span></div>
+        <div><b>7/24</b><span>destek</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <img src="img/courier.jpg" alt="Getirek kuryesi akşam İstanbul sokağında">
+      <div class="float-card f1"><i data-lucide="bell-ring"></i><div><b>Yeni sipariş!</b><span>Burger House · ₺299,90</span></div></div>
+      <div class="float-card f2"><i data-lucide="bike"></i><div><b>Kurye yolda</b><span>Tahmini varış 12 dk</span></div></div>
+      <div class="float-card f3"><i data-lucide="wallet"></i><div><b>+₺91,60 hakediş</b><span>Teslimat tamamlandı</span></div></div>
+    </div>
+  </section>
+
+  <section class="roles">
+    <h2>Üç taraf, tek sipariş</h2>
+    <p class="sub">Her rol kendi uygulamasını kullanır; sipariş durumu WebSocket ile anında herkese yansır.</p>
+    <div class="role-grid">
+      <article class="role">
+        <div class="role-ic"><i data-lucide="smartphone"></i></div>
+        <h3>Müşteri App</h3><span class="tech">React Native · iOS & Android</span>
+        <ul>
+          <li>Restoran, market, yedek parça — kategori ve arama</li>
+          <li>Sepet, kupon, kurye bahşişi, kart / kapıda ödeme</li>
+          <li>Canlı harita ile kurye takibi ve tahmini varış</li>
+          <li>Kurye ile uygulama içi chat ve gizli numaralı arama</li>
+          <li>Teslimat kodu ile güvenli teslim, puanlama</li>
+        </ul>
+        <button onclick="A.mode('live');A.focus('cust')">Uygulamayı gör <i data-lucide="arrow-right"></i></button>
+      </article>
+      <article class="role">
+        <div class="role-ic"><i data-lucide="bike"></i></div>
+        <h3>Kurye App</h3><span class="tech">React Native · konum servisi</span>
+        <ul>
+          <li>Çevrimiçi / çevrimdışı, yakındaki siparişe teklif</li>
+          <li>Teklif ekranı: mesafe, kazanç, geri sayım</li>
+          <li>Adım adım iş akışı: restoran → teslim al → müşteri</li>
+          <li>Açık adres, kat/daire, not, navigasyon, chat</li>
+          <li>Günlük / haftalık hakediş ve ödeme takvimi</li>
+        </ul>
+        <button onclick="A.mode('live');A.focus('cour')">Uygulamayı gör <i data-lucide="arrow-right"></i></button>
+      </article>
+      <article class="role">
+        <div class="role-ic"><i data-lucide="layout-dashboard"></i></div>
+        <h3>İşletme Paneli</h3><span class="tech">Laravel + Filament</span>
+        <ul>
+          <li>Sesli yeni sipariş bildirimi, kabul / ret, hazırlık süresi</li>
+          <li>Sipariş tablosu, durum akışı, detay ve zaman çizelgesi</li>
+          <li>Canlı kurye haritası</li>
+          <li>Ürün / stok yönetimi — restoran, market, yedek parça</li>
+          <li>Komisyon, net hakediş ve ödeme raporları</li>
+        </ul>
+        <button onclick="A.mode('panel')">Paneli gör <i data-lucide="arrow-right"></i></button>
+      </article>
+    </div>
+  </section>
+
+  <section class="flow">
+    <h2>Bir siparişin yolculuğu</h2>
+    <ol class="flow-steps">
+      <li><span>1</span><b>Sipariş</b><p>Müşteri sepeti onaylar, ödeme alınır.</p></li>
+      <li><span>2</span><b>İşletme onayı</b><p>Panelde sesli bildirim; hazırlık süresi seçilir.</p></li>
+      <li><span>3</span><b>Kurye ataması</b><p>En yakın uygun kuryeye teklif gider.</p></li>
+      <li><span>4</span><b>Teslim alma</b><p>Kurye işletmeden paketi alır.</p></li>
+      <li><span>5</span><b>Teslimat</b><p>Canlı takip, chat, teslimat kodu.</p></li>
+      <li><span>6</span><b>Hakediş</b><p>İşletme ve kurye hakedişi otomatik işlenir.</p></li>
+    </ol>
+  </section>
+
+  <section class="verticals">
+    <h2>Sadece yemek değil</h2>
+    <div class="vert-grid">
+      <div class="vert"><img src="img/burger.jpg" alt="Burger"><div><b>Restoranlar</b><span>Menü, opsiyonlar, hazırlık süresi</span></div></div>
+      <div class="vert"><img src="img/market.jpg" alt="Market ürünleri"><div><b>Market & Mahalle Esnafı</b><span>Stoklu ürün, gramaj, ikame ürün</span></div></div>
+      <div class="vert"><img src="img/parts.jpg" alt="Oto yedek parçalar"><div><b>Yedek Parça</b><span>Araç uyumluluğu, OEM kodu, aynı gün teslim</span></div></div>
+    </div>
+  </section>
+
+  <section class="arch">
+    <h2>Teknik mimari</h2>
+    <div class="arch-grid">
+      <div class="arch-box"><i data-lucide="smartphone"></i><b>Müşteri & Kurye</b><span>React Native (Expo) · Push (FCM/APNs) · arka plan konumu</span></div>
+      <div class="arch-box"><i data-lucide="server"></i><b>API</b><span>Laravel · Sanctum · kuyruk (Redis/Horizon)</span></div>
+      <div class="arch-box"><i data-lucide="layout-dashboard"></i><b>Paneller</b><span>Filament — İşletme paneli + Süper admin paneli</span></div>
+      <div class="arch-box"><i data-lucide="radio-tower"></i><b>Gerçek zaman</b><span>Laravel Reverb (WebSocket) · sipariş, konum, chat</span></div>
+      <div class="arch-box"><i data-lucide="database"></i><b>Veri</b><span>PostgreSQL + PostGIS (mesafe, bölge, kurye eşleme)</span></div>
+      <div class="arch-box"><i data-lucide="shield-check"></i><b>Güvenlik</b><span>Maskeli numara, teslimat kodu, 3D Secure ödeme</span></div>
+    </div>
+  </section>
+  <footer class="foot">Bu sayfa bir tanıtım demosudur — veriler örnektir, gerçek ödeme ya da konum kullanılmaz.</footer>
+</main>
+
+<!-- ===================== CANLI DEMO ===================== -->
+<main id="live" class="view">
+  <div class="stage">
+    <div class="dev" id="dev-cust">
+      <div class="dev-label"><i data-lucide="smartphone"></i>Müşteri App</div>
+      <div class="phone"><div class="notch"></div><div class="phone-in" id="cust"></div></div>
+    </div>
+    <div class="dev dev-panel" id="dev-panel">
+      <div class="dev-label"><i data-lucide="layout-dashboard"></i>İşletme Paneli <small>Filament</small></div>
+      <div class="browser">
+        <div class="browser-bar"><span></span><span></span><span></span><div class="url">isletme.getirek.com/panel</div></div>
+        <div class="panel" id="panel"></div>
+      </div>
+    </div>
+    <div class="dev" id="dev-cour">
+      <div class="dev-label"><i data-lucide="bike"></i>Kurye App</div>
+      <div class="phone"><div class="notch"></div><div class="phone-in" id="cour"></div></div>
+    </div>
+  </div>
+</main>
+
+<div class="caption" id="caption"><span class="cap-step" id="capStep"></span><span id="capText"></span><button onclick="A.stopPlay()" title="Durdur"><i data-lucide="square"></i></button></div>
+
+<script src="app.js"></script>
+</body>
+</html>
